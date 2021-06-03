@@ -1,4 +1,4 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 // video-11
 
@@ -282,155 +282,354 @@
 
 // video-20 (list view deep dive)
 
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+// import 'package:flutter/material.dart';
+// import 'package:flutter/rendering.dart';
 
 /* -----------------------------------------
                    main method
 -----------------------------------------*/
-void main() => runApp(MyApp());
+// void main() => runApp(MyApp());
 
 /* -----------------------------------------
                    MyApp
 -----------------------------------------*/
-class MyApp extends StatelessWidget {
-  static final String title = 'ListView Deep Dive';
+// class MyApp extends StatelessWidget {
+//   static final String title = 'ListView Deep Dive';
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: title,
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: HomePage(title: title),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       title: title,
+//       theme: ThemeData(primarySwatch: Colors.blue),
+//       home: HomePage(title: title),
+//     );
+//   }
+// }
 
 /* -----------------------------------------
                   HomePage
 -----------------------------------------*/
-class HomePage extends StatefulWidget {
-  final String title;
+// class HomePage extends StatefulWidget {
+//   final String title;
 
-  HomePage({@required this.title});
+//   HomePage({@required this.title});
 
-  @override
-  _HomePageState createState() => _HomePageState();
+//   @override
+//   _HomePageState createState() => _HomePageState();
+// }
+
+// class _HomePageState extends State<HomePage> {
+//   int index = 0;
+//   final items = List.generate(100, (counter) => 'Item: $counter');
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text(widget.title),
+//       ),
+//       body: buildListViews(),
+//       bottomNavigationBar: BottomNavigationBar(
+//         currentIndex: index,
+//         items: [
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.view_list),
+//             label: 'Basic',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.list_alt_rounded),
+//             label: 'Vertical',
+//           ),
+//           BottomNavigationBarItem(
+//             icon: Icon(Icons.line_style),
+//             label: 'Horizontal',
+//           ),
+//         ],
+//         onTap: (int index) => setState(() => this.index = index),
+//       ),
+//     );
+//   }
+
+// Widget buildListViews() {
+//   if (index == 0) {
+//     return buildBasicListView();
+//   } else if (index == 1) {
+//     return buildVerticalListView();
+//   } else if (index == 2) {
+//     return buildHorizontalListView();
+//   } else {
+//     return Container();
+//   }
+// }
+
+// Basic List View Builder method
+
+// Widget buildBasicListView() {
+//   return ListView(
+//     children: [
+//       ListTile(
+//         leading: CircleAvatar(
+//           backgroundColor: Colors.brown.shade800,
+//           child: Text('AK'),
+//         ),
+//         title: Text('Ab Karim'),
+//         subtitle: Text('Flutter Developer'),
+//         trailing: Icon(Icons.star, color: Colors.orange),
+//       ),
+//       ListTile(
+//         leading: CircleAvatar(
+//           backgroundColor: Colors.brown.shade800,
+//           child: Text('AR'),
+//         ),
+//         title: Text('Ab Rarim'),
+//         subtitle: Text('Android Developer'),
+//         trailing: Icon(Icons.star, color: Colors.orange),
+//       ),
+//       ListTile(
+//         leading: CircleAvatar(
+//           backgroundColor: Colors.brown.shade800,
+//           child: Text('AB'),
+//         ),
+//         title: Text('Abul'),
+//         subtitle: Text('iOS Developer'),
+//         trailing: Icon(Icons.star, color: Colors.orange),
+//       ),
+//     ],
+//   );
+// }
+
+// Vertical List View Builder method
+
+// Widget buildVerticalListView() {
+//   return ListView.separated(
+//     separatorBuilder: (context, index) => Divider(
+//       color: Colors.black,
+//     ),
+//     itemCount: items.length,
+//     itemBuilder: (context, index) {
+//       return ListTile(
+//         title: Text(items[index]),
+//       );
+//     },
+//   );
+// }
+
+// Horizontal List View Builder method
+
+// Widget buildHorizontalListView() {
+//   return ListView.separated(
+//     padding: EdgeInsets.all(16),
+//     scrollDirection: Axis.horizontal,
+//     separatorBuilder: (context, index) => Divider(
+//       color: Colors.black,
+//     ),
+//     itemCount: items.length,
+//     itemBuilder: (context, index) {
+//       return Container(
+//         width: 100,
+//         height: 50,
+//         child: ListTile(
+//           title: Text(items[index]),
+//         ),
+//       );
+//     },
+//   );
+// }
+// }
+
+// video-21(stack widgets)
+
+void main() {
+  runApp(MaterialApp(
+    title: "This is first App",
+    home: Scaffold(
+      appBar: AppBar(
+        title: Text('Stack example'),
+      ),
+      body: CardsApp(),
+    ),
+  ));
 }
 
-class _HomePageState extends State<HomePage> {
-  int index = 0;
-  final items = List.generate(100, (counter) => 'Item: $counter');
+class StackExample extends StatelessWidget {
+  // const StackExample({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: buildListViews(),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: index,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.view_list),
-            label: 'Basic',
+    // return Center(
+    //   child: Column(
+    //     mainAxisAlignment: MainAxisAlignment.center,
+    //     children: [
+    //       Container(
+    //         height: 200,
+    //         width: 200,
+    //         color: Colors.red,
+    //       ),
+    //       Container(
+    //         width: 100,
+    //         height: 100,
+    //         color: Colors.green,
+    //       ),
+    //       Container(
+    //         width: 50,
+    //         height: 50,
+    //         color: Colors.blue,
+    //       )
+    //     ],
+    //   ),
+    // );
+
+    return Center(
+      child: Stack(
+        // mainAxisAlignment: MainAxisAlignment.center,
+        // alignment: Alignment.topCenter,
+        overflow: Overflow.clip,
+        children: [
+          Container(
+            height: 200,
+            width: 200,
+            color: Colors.red,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.list_alt_rounded),
-            label: 'Vertical',
+          Positioned(
+            top: 0,
+            right: 0,
+            height: 120,
+            child: Container(
+              width: 100,
+              height: 100,
+              color: Colors.green,
+            ),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.line_style),
-            label: 'Horizontal',
-          ),
+          Positioned(
+            bottom: -20,
+            right: 0,
+            child: Container(
+              width: 50,
+              height: 50,
+              color: Colors.blue,
+            ),
+          )
         ],
-        onTap: (int index) => setState(() => this.index = index),
       ),
-    );
-  }
-
-  Widget buildListViews() {
-    if (index == 0) {
-      return buildBasicListView();
-    } else if (index == 1) {
-      return buildVerticalListView();
-    } else if (index == 2) {
-      return buildHorizontalListView();
-    } else {
-      return Container();
-    }
-  }
-
-  // Basic List View Builder method
-  Widget buildBasicListView() {
-    return ListView(
-      children: [
-        ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Colors.brown.shade800,
-            child: Text('AK'),
-          ),
-          title: Text('Ab Karim'),
-          subtitle: Text('Flutter Developer'),
-          trailing: Icon(Icons.star, color: Colors.orange),
-        ),
-        ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Colors.brown.shade800,
-            child: Text('AR'),
-          ),
-          title: Text('Ab Rarim'),
-          subtitle: Text('Android Developer'),
-          trailing: Icon(Icons.star, color: Colors.orange),
-        ),
-        ListTile(
-          leading: CircleAvatar(
-            backgroundColor: Colors.brown.shade800,
-            child: Text('AB'),
-          ),
-          title: Text('Abul'),
-          subtitle: Text('iOS Developer'),
-          trailing: Icon(Icons.star, color: Colors.orange),
-        ),
-      ],
-    );
-  }
-
-  // Vertical List View Builder method
-  Widget buildVerticalListView() {
-    return ListView.separated(
-      separatorBuilder: (context, index) => Divider(
-        color: Colors.black,
-      ),
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text(items[index]),
-        );
-      },
-    );
-  }
-
-  // Horizontal List View Builder method
-  Widget buildHorizontalListView() {
-    return ListView.separated(
-      padding: EdgeInsets.all(16),
-      scrollDirection: Axis.horizontal,
-      separatorBuilder: (context, index) => Divider(
-        color: Colors.black,
-      ),
-      itemCount: items.length,
-      itemBuilder: (context, index) {
-        return Container(
-          width: 100,
-          height: 50,
-          child: ListTile(
-            title: Text(items[index]),
-          ),
-        );
-      },
     );
   }
 }
+
+// video-22(grid view)
+
+class GridViews extends StatefulWidget {
+  // const GridViews({ Key? key }) : super(key: key);
+
+  @override
+  _GridViewsState createState() => _GridViewsState();
+}
+
+class _GridViewsState extends State<GridViews> {
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: GridView.count(
+        crossAxisCount: 3,
+        mainAxisSpacing: 10,
+        crossAxisSpacing: 10,
+        children: [
+          Container(
+            color: Colors.green,
+            child: Text('Hi'),
+            alignment: Alignment.center,
+          ),
+          Container(
+            color: Colors.green,
+            child: Text('Hi'),
+            alignment: Alignment.center,
+          ),
+          Container(
+            color: Colors.green,
+            child: Text('Hi'),
+            alignment: Alignment.center,
+          ),
+          Container(
+            color: Colors.green,
+            child: Text('Hi'),
+            alignment: Alignment.center,
+          ),
+          Container(
+            color: Colors.green,
+            child: Text('Hi'),
+            alignment: Alignment.center,
+          ),
+          Container(
+            color: Colors.green,
+            child: Text('Hi'),
+            alignment: Alignment.center,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// video-23(Grid view builder)
+
+class GridViewBuilders extends StatefulWidget {
+  // const GridViewBuilders({ Key? key }) : super(key: key);
+
+  @override
+  _GridViewBuildersState createState() => _GridViewBuildersState();
+}
+
+class _GridViewBuildersState extends State<GridViewBuilders> {
+  List<int> list = List();
+  @override
+  void initState() {
+    for (int i = 0; i <= 20; i++) {
+      list.add(i);
+    }
+    ;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        itemCount: list.length,
+        gridDelegate:
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        itemBuilder: (BuildContext Context, int index) {
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              color: Colors.green,
+              child: Text('${list[index]}'),
+              alignment: Alignment.center,
+            ),
+          );
+        });
+  }
+}
+
+// video-24(card widget)
+class CardsApp extends StatelessWidget {
+  // const Cards({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        width: 300,
+        height: 300,
+      ),
+      color: Colors.blue,
+      elevation: 5,
+      shadowColor: Colors.amber,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+          side: BorderSide(color: Colors.red, width: 2)),
+    );
+  }
+}
+
+
+// video-25(text-widgets)
