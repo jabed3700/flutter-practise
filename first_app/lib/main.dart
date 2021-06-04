@@ -440,17 +440,17 @@ import 'package:flutter/material.dart';
 
 // video-21(stack widgets)
 
-void main() {
-  runApp(MaterialApp(
-    title: "This is first App",
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text('Stack example'),
-      ),
-      body: CardsApp(),
-    ),
-  ));
-}
+// void main() {
+//   runApp(MaterialApp(
+//     title: "This is first App",
+//     home: Scaffold(
+//       appBar: AppBar(
+//         title: Text('Stack example'),
+//       ),
+//       body: CardsApp(),
+//     ),
+//   ));
+// }
 
 class StackExample extends StatelessWidget {
   // const StackExample({ Key? key }) : super(key: key);
@@ -631,5 +631,111 @@ class CardsApp extends StatelessWidget {
   }
 }
 
-
 // video-25(text-widgets)
+void main() {
+  runApp(MaterialApp(
+    title: "Text Widgets Example",
+    theme: ThemeData(
+        primarySwatch: Colors.purple,
+        visualDensity: VisualDensity.adaptivePlatformDensity),
+    home: Scaffold(
+      appBar: AppBar(
+        title: Text('Text Widget Example'),
+      ),
+      backgroundColor: Colors.grey[300],
+      body: IconWidgets(),
+    ),
+  ));
+}
+
+class TextWidgets extends StatelessWidget {
+  // const TextWidgets({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 500,
+      height: 300,
+      color: Colors.grey,
+      margin: EdgeInsets.all(20),
+      // child: Text(
+      //   'Hi this is text widget sadf asdf asdf asdf asdfasdf asdfasdfasdf asdf',
+      //   textAlign: TextAlign.center,
+      //   textScaleFactor: 2,
+      //   // overflow: TextOverflow.ellipsis,
+      //   maxLines: 2,
+      //   style: TextStyle(
+      //       color: Colors.red,
+      //       fontSize: 20,
+      //       fontStyle: FontStyle.italic,
+      //       fontWeight: FontWeight.w900,
+      //       letterSpacing: 2.0,
+      //       wordSpacing: 10.0),
+      // ),
+      child: Text.rich(TextSpan(text: 'hi', //default style
+          children: [
+            TextSpan(
+                text: "Amar sonar bangla",
+                style: TextStyle(color: Colors.red, fontSize: 18)),
+            TextSpan(
+                text: "Amar sonar bangla",
+                style: TextStyle(color: Colors.green, fontSize: 12))
+          ])),
+    );
+  }
+}
+
+// video-27(image widget -load network images)
+class ImageNetwork extends StatelessWidget {
+  // const ImageNetwork({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 300,
+      height: 300,
+      color: Colors.grey,
+      child: Image.network(
+          'https://image.shutterstock.com/image-photo/cat-medical-mask-protective-antiviral-260nw-1684423789.jpg'),
+    );
+  }
+}
+
+// video -31(how to use icon)
+
+class IconWidgets extends StatefulWidget {
+  // const IconWidgets({ Key? key }) : super(key: key);
+
+  @override
+  _IconWidgetsState createState() => _IconWidgetsState();
+}
+
+class _IconWidgetsState extends State<IconWidgets> {
+  int volumn = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        width: 300,
+        height: 300,
+        color: Colors.white,
+        padding: EdgeInsets.only(top: 16),
+        child: Column(
+          children: [
+            Icon(Icons.volume_down, size: 40, color: Colors.cyanAccent),
+            IconButton(
+              icon: Icon(Icons.volume_down, color: Colors.red, size: 50),
+              onPressed: () {
+                print('just click');
+                setState(() {
+                  volumn += 1;
+                });
+              },
+            ),
+            Text('$volumn'),
+          ],
+        ),
+      ),
+    );
+  }
+}
